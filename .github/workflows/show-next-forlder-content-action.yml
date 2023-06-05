@@ -1,0 +1,15 @@
+name: show-next-forlder-content-action
+run-name: ${{ github.actor }} is showing .next folder
+on: [push]
+jobs:
+  compile-and-show-folder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3 # récupérer le coee du repo
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: '18'
+      - run: npm install # lancer les commandes
+      - run: npm run build
+      - run: cd .next
+      - run: ls -a
