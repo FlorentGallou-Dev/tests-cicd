@@ -5,12 +5,11 @@ jobs:
   compile-and-show-folder:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3 # récupérer le coee du repo
-      - run: npm install # lancer les commandes
+      - uses: actions/checkout@v3         # récupérer le code du repo
+      - run: npm install                  # lancer les commandes
       - run: npm run build
       - run: npm run e2e:headless
-      - uses: actions/upload-artifact@v1
-        if: always()
+      - uses: actions/upload-artifact@v1  # ajouter action artefact pour récuperer les fichiers après execution de l'action
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: cypress/videos/
