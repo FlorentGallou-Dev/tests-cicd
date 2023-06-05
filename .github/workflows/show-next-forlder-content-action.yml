@@ -6,15 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3 # récupérer le coee du repo
-      # - uses: cypress-io/github-action
+      - run: npm install # lancer les commandes
+      - run: npm run build
+      - run: npm run e2e:headless
       - uses: actions/upload-artifact@v1
         if: always()
         with:
           name: cypress-videos
           path: cypress/videos
-      # - uses: actions/setup-node@v3
-      #   with:
-      #     node-version: '18'
-      - run: npm install # lancer les commandes
-      - run: npm run build
-      - run: npm run e2e:headless
