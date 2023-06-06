@@ -22,4 +22,4 @@ jobs:
         IP: ${{secrets.HOST}}
         PORT: ${{secrets.PORT}}
         SHELL: |                                # add commands i want to execute on server
-          "cd tests-cicd && git pull"
+          "ls -a"
