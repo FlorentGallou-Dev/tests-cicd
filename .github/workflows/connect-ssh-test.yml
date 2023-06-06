@@ -6,15 +6,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run : |
-      ssh-keyscan ${{secrets.HOST}} >> ~/.ssh/known_hosts
-      chmod 644 ~/.ssh/known_hosts
+    # - uses: actions/checkout@v2
+    # - run : |
+      # ssh-keyscan ${{secrets.HOST}} >> ~/.ssh/known_hosts
+      # chmod 644 ~/.ssh/known_hosts
 
-    - name: webfactory/ssh-agent
-      uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+    # - name: webfactory/ssh-agent
+      # uses: webfactory/ssh-agent@v0.8.0
+      # with:
+        # ssh-private-key: ${{ secrets.PRIVATE_KEY }}
 
     - name: server SSH connection
     - uses: tzzs/server-shell@v3                # action to connect to server via SSH
