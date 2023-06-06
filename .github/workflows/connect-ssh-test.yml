@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
     # - run : |
       # ssh-keyscan ${{secrets.HOST}} >> ~/.ssh/known_hosts
       # chmod 644 ~/.ssh/known_hosts
