@@ -1,0 +1,16 @@
+name: connect-ssh-test
+run-name: ${{ github.actor }} is connection to AWS via SSH
+on: [push]
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: whoami

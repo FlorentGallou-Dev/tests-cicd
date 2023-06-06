@@ -1,6 +1,6 @@
 name: show-next-forlder-content-action
 run-name: ${{ github.actor }} is showing .next folder
-on: [push]
+# on: [push]
 jobs:
 
   build:
