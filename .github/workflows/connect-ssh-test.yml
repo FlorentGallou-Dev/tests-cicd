@@ -6,6 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - uses: tzzs/server-shell@v3                # action to connect to server via SSH
       with:                                     # can find secrets.vars in github/repo/Settings > Secrets and variables
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}  # is my local private ssh key for my ssh connection
