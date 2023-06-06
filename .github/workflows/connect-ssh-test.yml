@@ -17,4 +17,5 @@ jobs:
         PORT: ${{secrets.PORT}}
         SHELL: |
           "echo action-test"
-          "ls"
+          "cd tests-cicd"
+          "ls -a"
