@@ -14,7 +14,5 @@ jobs:
         IP: ${{secrets.HOST}}
         PORT: ${{secrets.PORT}}
         SHELL: |                                # add commands i want to execute on server
-          "cd tests-cicd"
-          "npm install"
-          "cd .."
-          "pm2 startOrGracefulReload ecosystem.config.js"
+          "cd tests-cicd && npm install"
+          "cd .. && pm2 startOrGracefulReload ecosystem.config.js"
