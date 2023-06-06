@@ -6,11 +6,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: ls -a
+    - uses: actions/checkout@v2
+    - run: npm install
+      shell: bash
+    - uses: tzzs/server-shell@v3
+      with:
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
+        USERNAME: ${{secrets.SSH_USER}}
+        IP: ${{secrets.HOST}}
+        PORT: ${{secrets.PORT}}
+        SHELL: |
+          "echo action-test"
+          "ls"
