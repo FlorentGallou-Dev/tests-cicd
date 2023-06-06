@@ -15,8 +15,6 @@ jobs:
       # uses: webfactory/ssh-agent@v0.8.0
       # with:
         # ssh-private-key: ${{ secrets.PRIVATE_KEY }}
-
-    - name: server SSH connection
     - uses: tzzs/server-shell@v3                # action to connect to server via SSH
       with:                                     # can find secrets.vars in github/repo/Settings > Secrets and variables
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}  # is my local private ssh key for my ssh connection
