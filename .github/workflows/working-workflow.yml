@@ -1,6 +1,8 @@
 name: working-workflow
 run-name: ${{ github.actor }} is building - testing - deploying
-on: [push]
+on:
+  push:
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,15 +32,15 @@ jobs:
           with:
             name: e2e-video
             path: cypress/videos/
-  deploy:
-    runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v2
-      - uses: tzzs/server-shell@v3                # action to connect to server via SSH
-        with:                                     # can find secrets.vars in github/repo/Settings > Secrets and variables
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}  # is my local private ssh key for my ssh connection
-          USERNAME: ${{secrets.SSH_USER}}
-          IP: ${{secrets.HOST}}
-          PORT: ${{secrets.PORT}}
-          SHELL: |                                # add commands i want to execute on server
-            "cd tests-cicd && ls -a"
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #     steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: tzzs/server-shell@v3                # action to connect to server via SSH
+  #       with:                                     # can find secrets.vars in github/repo/Settings > Secrets and variables
+  #         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}  # is my local private ssh key for my ssh connection
+  #         USERNAME: ${{secrets.SSH_USER}}
+  #         IP: ${{secrets.HOST}}
+  #         PORT: ${{secrets.PORT}}
+  #         SHELL: |                                # add commands i want to execute on server
+  #           "cd tests-cicd && ls -a"
