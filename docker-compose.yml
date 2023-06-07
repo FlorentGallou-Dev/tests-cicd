@@ -6,6 +6,26 @@ services:
     volumes:
       - .:/app
     command: npm run dev
+  db:
+    image: mariadb
+    # command: --default-authentication-plugin=mysql_native_password
+    # restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+      MARIADB_DATABASE: database_name
+      MARIADB_USER: user
+      MARIADB_PASSWORD: resu
+    volumes:
+      - ./docker/db:/var/lib/mysql
+    # ports:
+      # - "3306:3306"
+  adminer:
+    image: adminer
+    # restart: always
+    ports:
+      - 8080:8080
+      
+
   # Used to create another serive exemple for a DB
   # redis:
     # image: "redis:alpine"
